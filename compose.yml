@@ -3,14 +3,12 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: deliki-api
 
   nginx:
     image: nginx:1.28-alpine
     container_name: deliki-nginx
     depends_on:
-      api:
-        condition: service_healthy
+      - api
     ports:
       - "80:80"
     volumes:
