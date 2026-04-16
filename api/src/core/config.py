@@ -4,13 +4,13 @@ import msgspec
 
 
 class DataPathConfig(msgspec.Struct):
-    path: Path = Path("./data/data.parquet")
+    path: str
 
 
 class CORSConfig(msgspec.Struct):
-    allow_origins: list[str] = ["*"]
-    allow_methods: list[str] = ["*"]
-    allow_headers: list[str] = ["*"]
+    allow_origins: list[str]
+    allow_methods: list[str]
+    allow_headers: list[str]
 
 
 class Config(msgspec.Struct):
