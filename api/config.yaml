@@ -1,0 +1,10 @@
+cors:
+  allow_origins:
+    - "*"
+  allow_methods:
+    - "*"
+  allow_headers:
+    - "*"
+
+data:
+  path: "./data.parquet"
