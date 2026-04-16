@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: deliki-api
+
+  nginx:
+    image: nginx:1.28-alpine
+    container_name: deliki-nginx
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/web:/usr/share/nginx/html:ro
