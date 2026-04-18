@@ -13,8 +13,14 @@ class CORSConfig(msgspec.Struct):
     allow_headers: list[str]
 
 
-class Config(msgspec.Struct):
+class APIConfig(msgspec.Struct):
     cors: CORSConfig
+    title: str = "DeLiki API"
+    version: str = "0.1.0"
+
+
+class Config(msgspec.Struct):
+    api: APIConfig
     data: DataPathConfig
 
 
