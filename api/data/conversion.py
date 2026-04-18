@@ -29,6 +29,7 @@ def main():
         "division_phone",
         "division_type",
         "division_settlement",
+        "medical_programs_in_divisions",
         "activity_score",
     ).collect().write_parquet(
         "./api/data.parquet"
