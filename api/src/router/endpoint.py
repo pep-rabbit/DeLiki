@@ -1,7 +1,7 @@
 import msgspec
 from litestar import Router, get
 from src.core.logic import get_pharmacies
-from src.router.response import PharmacyInfo
+from src.router.schuma import PharmacyInfo
 
 
 @get("/top-pharmacies")
