@@ -6,8 +6,8 @@ from src.router.endpoint import router
 app = Litestar(
     route_handlers=[router],
     cors_config=CORSConfig(
-        config.cors.allow_origins,
-        config.cors.allow_methods,
-        config.cors.allow_headers,
+        config.api.cors.allow_origins,
+        config.api.cors.allow_methods,
+        config.api.cors.allow_headers,
     ),
 )
