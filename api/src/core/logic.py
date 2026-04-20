@@ -1,5 +1,3 @@
-from typing import Awaitable
-
 import polars as pl
 from src.core.config import config
 
@@ -7,8 +5,8 @@ from src.core.config import config
 async def get_pharmacies(
     city: str,
     medical_program: str,
-) -> Awaitable[pl.DataFrame]:
-    return (
+) -> pl.DataFrame:
+    return await (
         pl.scan_parquet(config.data.path)
         .filter(
             pl.col("division_settlement").str.to_lowercase() == city.lower()
