@@ -6,7 +6,6 @@ from src.core.logic import get_pharmacies
 from src.router.schuma import PharmacyInfo
 
 log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
 
 
 @get("/top-pharmacies")
