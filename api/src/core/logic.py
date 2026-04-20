@@ -1,3 +1,5 @@
+from typing import Awaitable
+
 import polars as pl
 from src.core.config import config
 
@@ -5,7 +7,7 @@ from src.core.config import config
 async def get_pharmacies(
     city: str,
     medical_program: str,
-) -> pl.DataFrame:
+) -> Awaitable[pl.DataFrame]:
     return await (
         pl.scan_parquet(config.data.path)
         .filter(
