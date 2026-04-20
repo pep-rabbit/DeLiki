@@ -8,7 +8,7 @@ async def get_pharmacies(
     city: str,
     medical_program: str,
 ) -> Awaitable[pl.DataFrame]:
-    return await (
+    return (
         pl.scan_parquet(config.data.path)
         .filter(
             pl.col("division_settlement").str.to_lowercase() == city.lower()
