@@ -1,7 +1,11 @@
+import logging
+
 import msgspec
 from litestar import Router, get
 from src.core.logic import get_pharmacies
 from src.router.schuma import PharmacyInfo
+
+log = logging.getLogger(__name__)
 
 
 @get("/top-pharmacies")
@@ -9,9 +13,15 @@ async def top_pharmacies(
     city: str,
     medical_program: str,
 ) -> list[PharmacyInfo]:
-    pharmacies = await get_pharmacies(city, medical_program)
+    log.debug(
+        "Fetching top pharmacies: %s %s",
+        city=city,
+        medical_program=medical_program,
+    )
+
     return msgspec.json.decode(
-        pharmacies.write_json(), type=list[PharmacyInfo]
+        (await get_pharmacies(city, medical_program)).write_json(),
+        type=list[PharmacyInfo],
     )
 
 
